@@ -1,0 +1,236 @@
+.expandable-list {
+    margin: auto;
+    width: 100%;
+    overflow-y: auto;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.expandable-item {
+    margin-bottom: 10.5px;
+    background: white;
+    box-sizing: border-box;
+    /* border-top:1px solid #000;
+    border-left:1px solid #000;
+    border-right:1px solid #000; */
+    padding: 10px;
+    width: 100%;
+    box-shadow: 2px 3px 3px grey;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+.expandable-item:first-of-type {
+    border-radius: 5px 5px 0 0;
+}
+
+.expandable-item:last-of-type {
+    border-radius: 0 0 5px 5px;
+}
+
+.expandable-header {
+    position: relative;
+    height: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.expandable-icon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transform: rotateZ(45deg);
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    background: #8c1515;
+    transition: all 0.3s;
+}
+
+.expandable-item.active .expandable-icon {
+    transform: rotateZ(0);
+}
+
+.expandable-icon .line {
+    width: 15px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.4s;
+}
+
+.expandable-icon .line:nth-child(1) {
+    transform: rotateZ(45deg);
+}
+
+.expandable-icon .line:nth-child(2) {
+    transform: rotateZ(-45deg);
+}
+
+.expandable-item .expandable-body {
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0 1em;
+    transition: all 0.5s ease-in-out;
+    height: 0px;
+}
+
+.expandable-item.active .expandable-body {
+    margin-top: 5px;
+    height: auto;
+}
+
+.expandable-item.active .expandable-icon .line:nth-child(1) {
+    transform: rotateZ(0deg);
+}
+
+.expandable-item.active .expandable-icon .line:nth-child(2) {
+    transform: rotateZ(180deg);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+/* * {
+    padding: 0;
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+} */
+/* body {
+    background: #ccc;
+} */
+.list-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    width: 40%;
+    min-width: 300px;
+    /* height: 300px; */
+}
+.box .front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #262626;
+    backface-visibility: hidden;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: 1s;
+}
+.box:hover .front {
+    transform: perspective(1000px) rotateY(180deg);
+}
+.box .back {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(180, 9, 17);
+    backface-visibility: hidden;
+    transform: perspective(1000px) rotateY(-180deg);
+    transition: 1s;
+}
+.box:hover .back {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+/**********  front  **************/
+.box .front .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.box .front .center img {
+    width: 100px;
+    height: 100px;
+}
+.box .front .center h1 {
+    font-size: 25px;
+    color: #fff;
+    white-space: normal;
+}
+
+/**********  back  **************/
+.box .back .row {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+.box .back .row:nth-of-type(1) {
+    background: #fff;
+    border-bottom: 5px solid rgb(180, 9, 17);
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 150px;
+}
+.box .back .row:nth-of-type(2) {
+    background: #262626;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.box .back .row img {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+.box .back .row h1 {
+    font-size: 25px;
+    color: #262626;
+    white-space: nowrap;
+    display: inline-block;
+}
+.box .back .row span {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 0 0 0 15px;
+    margin-bottom: 5px;
+}
+.box .back .row span::before {
+    content: "";
+    font-family: "fontAwesome";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    color: #fff;
+    font-size: 10px;
+}
+.box .back .row span:nth-of-type(1)::before {
+    content: "\f095";
+}
+.box .back .row span:nth-of-type(2)::before {
+    content: "\f003";
+}
+.box .back .row span:nth-of-type(3)::before {
+    content: "\f041";
+}
+
+.row{
+    margin-left: -7px;
+}
